@@ -1,0 +1,24 @@
+{% if menu %}
+  {% set nav_items = {} %}
+
+  {% for item in menu %}
+    {% set nav_item = {
+      title: item.title,
+      url: item.link,
+      parent_element: 'ul',
+      item_classes: item.classes,
+      link_id: item.title|replace({' ': ''})|lower,
+      link_target: item.target,
+      items: item.children
+    } %}
+
+    {% set nav_items = nav_items|merge([nav_item]) %}
+  {% endfor %}
+
+  {% include '@molecules/nav/_nav.tpl.twig' with {
+    nav_element: 'ul',
+    nav_id: 'primaryNav',
+    nav_other_classes: 'primary-nav',
+    items: nav_items
+  } %}
+{% endif %}

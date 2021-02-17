@@ -1,0 +1,42 @@
+{% embed '@atoms/skip-nav/_skip-nav.tpl.twig' %}
+  {% block skip_nav_content %}
+    {{ _e( 'Skip to content') }}
+  {% endblock skip_nav_content %}
+{% endembed %}
+{% embed '@organisms/header/_header.tpl.twig' with {
+  brand: {
+    url: site.url,
+    logo_svg_inline: 'logo.svg',
+    colorOriginal: true,
+    site_name: site.name,
+    site_slogan: site.description,
+    branding_other_classes: 'navbar-brand'
+  },
+  header_other_classes: ''
+} %}
+  {% block primary_navigation %}
+    {% include "partial/menus/menu.twig" with {
+      'menu': menu.get_items,
+      'nav_id': 'primaryNav',
+      'hover_dropdown': true,
+      'navbar_breakpoint': 'lg',
+      'breakpoints': sass_data['scssBreakpoints'],
+      'nav_other_classes': 'primary-nav'
+    } %}
+    {% include '@atoms/button/_button.tpl.twig' with {
+      button_element: 'a',
+      button_link: site.url ~ '/contact',
+      button_color: 'primary',
+      button_text: 'Contact Us',
+      button_other_classes: 'header-contact-button contact-cta'
+    } %}
+  {% endblock primary_navigation %}
+  {% block secondary_navigation %}
+    {% include "partial/menus/menu.twig" with {
+      'menu': menu.get_items,
+      'nav_id': 'userNavHeader',
+      'navbar_breakpoint': 'lg',
+      'nav_other_classes': 'user-nav'
+    } %}
+  {% endblock secondary_navigation %}
+{% endembed %}

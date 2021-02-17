@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * <%= spacedName %>
+ *
+ * Available variables for <%= spacedName %>:
+ *  - <%= underscoreName %>_classes [array]: Additional component classes.
+ *  - <%= underscoreName %>_other_classes [string]: Additional component classes.
+ */
+#}
+
+{% set <%= underscoreName %>_classes = <%= underscoreName %>_classes|default([])|merge([
+  '<%= name %>',
+  <%= underscoreName %>_other_classes,
+]) | sort | join(' ') | trim %}
+
+<div class="{{ <%= underscoreName %>_classes }}">
+  <h1><%= spacedName %></h1>
+</div>

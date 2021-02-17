@@ -1,0 +1,172 @@
+{% embed '@organisms/footer/_footer.tpl.twig' with {
+  brand: {
+    url: '/',
+    logo_svg_inline: 'logo.svg',
+    colorOriginal: false,
+    site_name: site.name,
+    site_slogan: site.description,
+    branding_classes: [],
+    branding_other_classes: 'footer-brand'
+  },
+  contact_button: {
+    button_element: 'a',
+    button_link: site.url ~ '/contact',
+    button_color: 'primary',
+    button_text: 'Contact Us',
+    button_other_classes: 'footer-contact-button contact-cta'
+  },
+  footer_other_classes: ''
+} %}
+
+  {% block footer_nav %}
+    {% include "partial/menus/menu.twig" with {
+      'menu': menu.get_items,
+      'nav_id': 'footerNav',
+      'navbar_breakpoint': 'sm',
+      'nav_other_classes': 'footer-nav'
+    } %}
+  {% endblock footer_nav %}
+
+  {% block contact_info %}
+    {% include '@atoms/list/_list.tpl.twig' with {
+      parent_element: 'ul',
+      parent_classes: [],
+      parent_other_classes: 'site-footer--contact-info',
+      items: {
+        item1: {
+          item_text: '<strong>Main</strong> <a href="tel:+1800-858-7654">800.858.7654</a>'
+        },
+        item2: {
+          item_text: '<strong>Sales</strong> <a href="tel:+1800-858-7654">800.858.7654</a>'
+        },
+        item3: {
+          item_text: '<strong>Support</strong> <a href="tel:+1800-858-7654">800.858.7654</a>'
+        }
+      }
+    } %}
+  {% endblock contact_info %}
+
+  {% block footer_search %}
+    {% embed '@atoms/form/_form.tpl.twig' with {
+      attributes: '',
+      name: 'footer-search',
+      id: 'footerSearch',
+      charset: '',
+      action: '',
+      autocomplete: '',
+      method: '',
+      enctype: '',
+      novalidate: '',
+      target: '',
+      heading: 'Search',
+      form_other_classes: ''
+      } %}
+      {% block form_content %}
+        <input type="text" placeholder="Search">
+        {% embed '@atoms/button/_button.tpl.twig' with {
+          button_other_classes: 'search-submit'
+          } %}
+          {% block button_content %}
+            {% include '@atoms/svg/_svg~icon.tpl.twig' with {
+              width: '30px',
+              height: '30px',
+              name: 'search',
+              fill: 'royal-blue',
+              svg_other_classes: 'icon',
+            } %}
+          {% endblock button_content %}
+        {% endembed %}
+      {% endblock form_content %}
+    {% endembed %}
+  {% endblock footer_search %}
+
+  {% block footer_actions %}
+    {% embed '@atoms/form/_form.tpl.twig' with {
+      attributes: '',
+      name: 'patternlab-demo-name',
+      id: 'patternlab-demo-id',
+      charset: '',
+      action: '',
+      autocomplete: '',
+      method: '',
+      enctype: '',
+      novalidate: '',
+      target: '',
+      heading: 'Subscribe!',
+      intro: 'Creative thinking, market analysis, & expert opinion delivered quarterly.',
+      form_other_classes: ''
+      } %}
+      {% block form_content %}
+        <input type="text">
+        {% include '@atoms/button/_button.tpl.twig' with {
+          button_color: 'primary',
+          button_text: 'Sign me up',
+          button_other_classes: 'form-submit'
+        } %}
+      {% endblock form_content %}
+    {% endembed %}
+    {% include "partial/menus/menu.twig" with {
+      'menu': menu.get_items,
+      'nav_id': 'userNavFooter',
+      'nav_other_classes': 'user-nav'
+    } %}
+  {% endblock footer_actions %}
+
+  {% block copyright %}
+    &copy; {{"now"|date('Y')}} Allegiance Group
+  {% endblock copyright %}
+
+  {% block social_nav %}
+    {% include '@molecules/social-nav/_social-nav.tpl.twig' with {
+      nav_id: 'socialNavHorizontal',
+      bullet_icon_position: 'before',
+      bullet_icon_size: '28px',
+      hide_labels: true,
+      hide_icons: false,
+      nav_direction: 'horizontal',
+      social_nav_items: {
+        item1: {
+          item_classes: ['linked-in'],
+          label: 'LinkedIn',
+          url: 'http://www.linkedin.com',
+          icon: 'fab fa-linkedin-in',
+          icon_color: 'deep-cerulean',
+          icon_position: 'before',
+          icon_width: '20px',
+          icon_height: '20px'
+        },
+        item2: {
+          item_classes: ['twitter'],
+          label: 'Twitter',
+          url: 'http://www.twitter.com',
+          icon: 'fab fa-twitter',
+          icon_color: 'dodger-blue',
+          icon_position: 'before',
+          icon_width: '20px',
+          icon_height: '20px'
+        },
+        item3: {
+          item_classes: ['facebook'],
+          label: 'Facebook',
+          url: 'http://www.facebook.com',
+          icon: 'fab fa-facebook-f',
+          icon_color: 'chambray',
+          icon_position: 'before',
+          icon_width: '20px',
+          icon_height: '20px'
+        }
+      },
+      social_nav_classes: [],
+      social_nav_other_classes: ''
+    } %}
+  {% endblock social_nav %}
+
+  {% block utilities %}
+    {% include "partial/menus/menu.twig" with {
+      'menu': menu.get_items,
+      'nav_id': 'utilityNav',
+      'nav_other_classes': 'utility-nav'
+    } %}
+  {% endblock utilities %}
+
+{% endembed %}

@@ -1,0 +1,21 @@
+# Ignore IDE config
+.idea
+
+# Ignore node dependency directories
+node_modules/
+
+# Ignore composer dependency directories
+vendor/
+
+# Ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# Ignore build directories
+dist/
+build/
+
+# Ignore everything in the "patternlab" directory, except patterns:
+**/patternlab/**
+!**/patternlab/source
