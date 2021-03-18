@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * svg~icon
+ *
+ * Available variables for svgicon:
+ *  - name [string]: String filename of the SVG to use from svg/
+ *  - fill [string]: Pass in a theme-color to colorize the SVG. Otherwise it will default to black.
+ *  - width [string]: icon width
+ *  - height [string]: icon height
+ *  - svg_other_classes [array]: Additional component classes.
+ */
+#}
+
+{% set svg_classes = svg_classes|default([])|merge([
+  'svg',
+  'svg--icon',
+  fill ? 'color-fill--' ~ fill : '',
+  svg_other_classes,
+]) | sort | join(' ') | trim %}
+
+<span class="{{ svg_classes }}" type="image/svg+xml" style="width: {{ width }}; height: {{ height }};">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="{{ paths.assets }}/spritemap.svg?cacheBuster={{ random() }}#sprite-{{ name }}"></use>
+  </svg>
+</span>

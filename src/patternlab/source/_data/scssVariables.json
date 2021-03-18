@@ -1,0 +1,131 @@
+{
+  "scssColors": {
+    "primary": "rgb(64, 93, 230)",
+    "secondary": "rgb(88, 81, 219)",
+    "success": "rgb(193, 53, 132)",
+    "info": "rgb(0, 198, 255)",
+    "warning": "rgb(255, 220, 128)",
+    "danger": "rgb(237, 28, 36)",
+    "light": "rgb(137, 137, 137)",
+    "dark": "rgb(128, 128, 128)",
+    "white": "rgb(255, 255, 255)",
+    "black": "rgb(0, 0, 0)",
+    "gray": "rgb(129, 129, 129)",
+    "gray-dark": "rgb(128, 128, 128)",
+    "gray-light": "rgb(137, 137, 137)",
+    "gray-ultralight": "rgb(236, 236, 236)",
+    "san-marino": "rgb(66, 103, 178)",
+    "azure-radiance": "rgb(0, 120, 255)",
+    "bright-turquoise": "rgb(0, 198, 255)",
+    "dodger-blue": "rgb(29, 161, 242)",
+    "woodsmoke": "rgb(20, 23, 26)",
+    "pale-sky": "rgb(101, 119, 134)",
+    "cadet-blue": "rgb(170, 184, 194)",
+    "mystic": "rgb(225, 232, 237)",
+    "catskill-white": "rgb(245, 248, 250)",
+    "royal-blue": "rgb(64, 93, 230)",
+    "royal-blue-dark": "rgb(88, 81, 219)",
+    "royal-purple": "rgb(131, 58, 180)",
+    "medium-red-violet": "rgb(193, 53, 132)",
+    "cerise-red": "rgb(225, 48, 108)",
+    "torch-red": "rgb(253, 29, 29)",
+    "flamingo": "rgb(245, 96, 64)",
+    "crusta": "rgb(247, 119, 55)",
+    "yellow-orange": "rgb(252, 175, 69)",
+    "salomie": "rgb(255, 220, 128)",
+    "red": "rgb(255, 0, 0)",
+    "mine-shaft": "rgb(40, 40, 40)",
+    "cerulean-blue": "rgb(40, 103, 178)",
+    "persian-blue": "rgb(36, 30, 172)",
+    "ultramarine": "rgb(12, 6, 152)",
+    "cornflower-blue": "rgb(102, 173, 237)",
+    "afg-royal-blue": "rgb(69, 114, 218)",
+    "afg-royal-blue-dark": "rgb(63, 109, 217)",
+    "storm-gray": "rgb(112, 112, 123)",
+    "afg-woodsmoke": "rgb(22, 22, 26)",
+    "gallery": "rgb(237, 237, 237)",
+    "crimson": "rgb(237, 28, 36)"
+  },
+  "scssBreakpoints": {
+    "xs": 0,
+    "sm": "33.88235294117647em",
+    "md": "45.1764705882353em",
+    "lg": "58.35294117647059em",
+    "xl": "95.29411764705883em",
+    "xxl": "105.88235294117646em"
+  },
+  "contentWidths": {
+    "sm": "31.764705882352942rem",
+    "md": "42.35294117647059rem",
+    "lg": "56.470588235294116rem",
+    "xl": "82.3529411764706rem",
+    "xxl": "97.82352941176471rem"
+  },
+  "scssSpacing": {
+    "0": 0,
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "1rem",
+    "4": "1.5rem",
+    "5": "3rem"
+  },
+  "fontFamilies": {
+    "font-stack-serif": [
+      "Montserrat",
+      "sans-serif"
+    ],
+    "font-stack-sans-serif": [
+      "Montserrat",
+      "sans-serif"
+    ],
+    "font-stack-base": [
+      "Montserrat",
+      "sans-serif"
+    ],
+    "font-stack-headings": [
+      "ff-good-headline-web-pro-nar",
+      "sans-serif"
+    ],
+    "font-stack-monospace": [
+      "Source Code Pro",
+      "monospace"
+    ],
+    "font-stack-code": [
+      "Source Code Pro",
+      "monospace"
+    ],
+    "font-stack-buttons": [
+      "ff-good-headline-web-pro-con",
+      "sans-serif"
+    ]
+  },
+  "fontSizes": {
+    "base": "1rem",
+    "lg": "1rem * 1.25",
+    "sm": "1rem * 0.875"
+  },
+  "fontWeights": {
+    "light": 300,
+    "normal": 400,
+    "bold": 700
+  },
+  "scssIcons": [
+    "afg-logo-mark-circled",
+    "afg-logo-mark",
+    "article",
+    "bfred-logo-alt",
+    "bfred-logo",
+    "chevron-down",
+    "chevron-left",
+    "chevron-right",
+    "chevron-up",
+    "close",
+    "diamond",
+    "fundraising",
+    "menu",
+    "person",
+    "search",
+    "target-audience",
+    "technology"
+  ]
+}

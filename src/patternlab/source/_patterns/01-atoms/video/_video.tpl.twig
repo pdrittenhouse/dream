@@ -1,0 +1,112 @@
+{#
+/**
+ * @file
+ * video
+ *
+ * Available variables for video:
+ * - title [string]: Video title
+ * - format [string]: format of video ('youtube', 'vimeo' or null)
+ * - source [string]: URL for video
+ * - ogg_source [string]: URL for OGG video
+ * - webm_source [string]: URL for WEBM video
+ * - flv_src [string]: URL for FLV
+ * - 3gp_src: URL for 3gp video
+ * - autoplay [bool]: Autoplay video (YouTube)
+ * - loop [bool]: Loop video (YouTube)
+ * - fullscreen [bool]: Allow fullscreen
+ * - controls [bool]: Show controls
+ * - info [bool]: Show video info (YouTube)
+ * - aspect_ratio [string]: Set to 'wide' for 16:9 aspect ratio, otherwise defaults to 4:3
+ * - width: Set width of video container
+ *
+ */
+#}
+
+{% set video_classes = video_classes|default([])|merge([
+  'video',
+  'mb-5',
+  format ? 'image-format--' ~ format : '',
+  aspect_ratio == 'wide' ? aspect_ratio : '',
+  controls ? 'has-controls' : '',
+  video_other_classes,
+]) | sort | join(' ') | trim %}
+
+{% if width is not empty %}
+  {% set width = width %}
+{% else %}
+  {% set width = 'auto' %}
+{% endif %}
+
+<div class="{{ video_classes }}" style="width: {{ width }}">
+  {% if title %}
+    <h1 class="video-title">{{ title }}</h1>
+  {% endif %}
+  <div class="video-responsive">
+
+    {% if format == 'youtube' or format == 'vimeo' or format == 'iframe' %}
+
+      {% if autoplay == true %}
+        {% set autoplay = '1' %}
+        {% set allow_autoplay = 'autoplay;' %}
+      {% else %}
+        {% set autoplay = '0' %}
+      {% endif %}
+
+      {% if loop == true %}
+        {% set loop = '1' %}
+      {% else %}
+        {% set loop = '0' %}
+      {% endif %}
+
+      {% if fullscreen == true %}
+        {% set fullscreen = 'allowfullscreen' %}
+        {% set allow_fullscreen = 'fullscreen;' %}
+      {% else %}
+        {% set fullscreen = '0' %}
+      {% endif %}
+
+      {% if controls == true %}
+        {% set controls = '1' %}
+      {% else %}
+        {% set controls = '0' %}
+      {% endif %}
+
+      {% if info == true %}
+        {% set info = '1' %}
+      {% else %}
+        {% set info = '0' %}
+      {% endif %}
+
+      <iframe width="100%" height="100%" src="{{ source }}?rel=0?version=3&autoplay={{ autoplay }}&controls={{ controls }}&showinfo={{ info }}&loop={{ loop }}" frameborder="0" allow="accelerometer; {{ allow_autoplay }} encrypted-media; gyroscope; picture-in-picture; {{ allow_fullscreen }}" {{ fullscreen }}></iframe>
+
+    {% else %}
+
+      {% if controls == true %}
+        {% set controls = 'controls="controls"' %}
+      {% endif %}
+
+      <video width="100%" height="100%" {{ controls }}>
+        <source src="{{ source }}" type="video/mp4" />
+        {% if ogg_source is not empty%}
+          <source src="{{ ogg_source }}" type="video/ogg" />
+        {% endif %}
+        {% if webm_source is not empty%}
+          <source src="{{ webm_source }}" type="video/webm" />
+        {% endif %}
+        {% if threegp_source is not empty%}
+          <source src="{{ threegp_source }}" type="video/3gp">
+        {% endif %}
+        <object data="{{ source }}" width="100%" height="100%">
+          {% if flv_source is not empty%}
+            <embed src="{{ flv_source }}" width="100%" height="100%">
+            Your browser does not support video
+            </embed>
+          {% endif %}
+        </object>
+      </video>
+
+    {% endif %}
+
+  </div>
+</div>
+

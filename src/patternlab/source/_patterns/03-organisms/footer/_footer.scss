@@ -1,0 +1,81 @@
+// Custom styles for footer
+
+// The non-printing variables, functions, and mixins of 00-protons/variables
+// are provided to this file via:
+//   webpack.config.js: sass-loader.data|includePaths
+
+.site-footer {
+
+  &--nav {}
+
+  &--nav-menu {}
+
+  &--info {}
+
+  &--company {
+    @include make-col-ready;
+    @include make-col(12);
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(6);
+    }
+  }
+
+  &--contact {
+    @include make-col-ready;
+    @include make-col(12);
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(6);
+    }
+  }
+
+  &--contact-info {}
+
+  &--contact-button {
+    @include make-col-ready;
+    @include make-col(12);
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(6);
+    }
+  }
+
+  &--actions {
+    @include make-col-ready;
+    @include make-col(12);
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(6);
+    }
+  }
+
+  &--meta {}
+
+  &--copyright {
+    @include make-col-ready;
+    @include make-col(12);
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+  }
+
+  &--social-nav {
+    @include make-col-ready;
+    @include make-col(12);
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+  }
+
+  &--utilities {
+    @include make-col-ready;
+    @include make-col(12);
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+  }
+}

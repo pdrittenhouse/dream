@@ -1,0 +1,36 @@
+// Custom Button Variables
+// Button mixin in non-printing/mixins/_content-utilities.scss
+// Example usage:
+//  @include button();
+$btnBackgroundColor: c(persian-blue);
+$btnBackgroundHoverColor: c(white);
+$btnBorderTopColor: c(persian-blue);
+$btnBorderBottomColor: c(persian-blue);
+$btnBorderLeftColor: c(persian-blue);
+$btnBorderRightColor: c(persian-blue);
+$btnBorderTopHoverColor: c(white);
+$btnBorderBottomHoverColor: c(white);
+$btnBorderLeftHoverColor: c(white);
+$btnBorderRightHoverColor: c(white);
+$btnBorderTopWidth: 3px;
+$btnBorderBottomWidth: 3px;
+$btnBorderLeftWidth: 3px;
+$btnBorderRightWidth: 3px;
+$btnBorderTopStyle: solid;
+$btnBorderBottomStyle: solid;
+$btnBorderLeftStyle: solid;
+$btnBorderRightStyle: solid;
+$btnBorderTopLeftRadius: 34px;
+$btnBorderTopRightRadius: 34px;
+$btnBorderBottomLeftRadius: 34px;
+$btnBorderBottomRightRadius: 34px;
+$btnColor: c(white);
+$btnColorHover: c(royal-blue, dark);
+$btnFontFamily: $font-stack-buttons;
+$btnFontSize: 26px;
+$btnFontWeight: bold;
+$btnFontStyle: normal;
+$btnLetterSpacing: 1.04px;
+$btnLineHeight: 31px;
+$btnTextTransform: uppercase;
+$btnPadding: 12px 45px;

@@ -1,0 +1,15 @@
+:root {}
+
+html {
+  font-size: $baseFontSize; // Base font size defined in non-printing/_type.scss
+  height: 100%
+}
+
+body {
+  // Base font stack defined in non-printing/_type.scss
+  // font() mixin in non-printing/mixins/_content-utilities.scss
+  @include font();
+  min-height: 100%;
+  height: 100%;
+  transition: $global-transition-properties $transition-duration $transition-timing-function;
+}

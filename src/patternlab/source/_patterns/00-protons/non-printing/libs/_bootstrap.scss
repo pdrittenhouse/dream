@@ -1,0 +1,146 @@
+// Bootstrap variable customization
+// See all variables available at: ~bootstrap/scss/_variables.scss
+
+// Spacing
+// Bootstrap Spacers use $spacer var of 1rem and assumes browser 16px default.
+// Updating the values in $spacers list adds the value to Bootstrap's utility spacers.
+// Example, the below adds a mb-6 utility spacing class.
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer / 4,
+  2: $spacer / 2,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
+
+// Grid
+$grid-columns:                12 !default;
+$grid-gutter-width:           1.5rem !default;
+$grid-row-columns:            6 !default;
+
+$grid-breakpoints: (
+  xs: em-calc(0),
+  sm: em-calc(576px), //33.88em
+  md: em-calc(768px), //45.176em
+  lg: em-calc(992px), //58.35em
+  xl: em-calc(1620px), //95.29em
+  xxl: em-calc(1800px), //105.88em
+);
+
+$container-max-widths: (
+  sm: rem-calc(540px), //31.76rem
+  md: rem-calc(720px), //42.35rem
+  lg: rem-calc(960px), //56.47rem
+  xl: rem-calc(1400px), //82.35rem
+  xxl: rem-calc(1663px), //97.82rem
+);
+
+// Colors
+$primary:       c(royal-blue);
+$secondary:     c(royal-blue, dark);
+$success:       c(medium-red-violet);
+$info:          c(bright-turquoise);
+$warning:       c(salomie);
+$danger:        c(crimson);
+$light:         c(gray, light);
+$dark:          c(gray, dark);
+
+// Replace Bootstrap theme-colors sass map
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+) !default;
+
+// Merge colors with Bootstrap $theme-colors sass map
+@each $name, $variantList in $c-palette {
+  @each $variant, $color in $variantList {
+    @if ($variant == 'base') {
+      $new-color: (
+        '#{$name}': $color
+      );
+      $theme-colors: map-merge($theme-colors, $new-color);
+    } @else {
+      $new-color: (
+        '#{$name}-#{$variant}': $color
+      );
+      $theme-colors: map-merge($theme-colors, $new-color);
+    }
+  }
+}
+
+// Type
+// Assumes the browser default, typically `16px`. Should match base font size set in /non-printing/_type.scss.
+$font-size-base:              rem-calc($baseFontSize);
+
+$font-size-lg:                #{$font-size-base} * 1.25 !default;
+$font-size-sm:                #{$font-size-base} * .875 !default;
+
+$font-family-sans-serif:      $font-stack-sans-serif;
+$font-family-monospace:       $font-stack-monospace;
+$font-family-base:            $font-stack-base;
+$font-family-code:            $font-stack-code;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
+
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            1.5 !default;
+
+$h1-font-size:                calc(#{$font-size-base} * 5) !default;
+$h2-font-size:                calc(#{$font-size-base} * 2.5) !default;
+$h3-font-size:                calc(#{$font-size-base} * 1.5) !default;
+$h4-font-size:                calc(#{$font-size-base} * 1) !default;
+$h5-font-size:                calc(#{$font-size-base} * .8) !default;
+$h6-font-size:                calc(#{$font-size-base} * .75) !default;
+
+$headings-margin-bottom:      calc(#{$spacer} * .625);
+$headings-font-family:        $font-stack-headings;
+$headings-font-weight:        500 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              null !default;
+
+$lead-font-size:              #{$font-size-base} * 1.25 !default;
+$blockquote-font-size:        #{$font-size-base} * 1.25 !default;
+
+// Forms
+$form-check-min-height:       #{$font-size-base} * $line-height-base !default;
+
+// Navbar
+$nav-link-padding-y:          rem-calc(8px);
+$nav-link-height:             #{$font-size-base} * $line-height-base + $nav-link-padding-y * 2 !default;
+$navbar-brand-font-size:      $font-size-lg !default;
+$navbar-brand-height:         #{$navbar-brand-font-size} * $line-height-base !default;
+
+// Progress
+$progress-font-size:          #{$font-size-base} * .75 !default;
+
+// Buttons
+$btn-border-radius:           rem-calc(4px);
+
+// Cards
+$card-border-width:           rem-calc(1px);
+
+// Links
+$link-color:                              c(gray, dark);
+$link-decoration:                         none !default;
+$link-hover-color:                        c(gray, light);
+$link-hover-decoration:                   underline !default;
+
+//-----------------------------------------------------------------------------
+
+// Bootstrap non-printing tools. DO NOT REMOVE, because Sass overrides must be
+// defined BEFORE the !default values are.
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';

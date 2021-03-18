@@ -1,0 +1,59 @@
+// Custom styles for card
+
+// The non-printing variables, functions, and mixins of 00-protons/variables
+// are provided to this file via:
+//   webpack.config.js: sass-loader.data|includePaths
+
+.card {
+
+  &-content-wrapper {
+    @include flexbox;
+    @include flex-flow(row wrap);
+  }
+
+  &-header {
+    @include flex(0 0 100%);
+    background: transparent;
+
+    .card-label {
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+  }
+
+  &-image {
+    @include flex(0 0 100%);
+  }
+
+  &-content {
+    @include flex(0 0 100%);
+  }
+
+  &-intro {
+    padding: rem-calc(21.25px);
+  }
+
+  &-lead {}
+
+  &-body {
+
+    .card-intro + & {
+      padding-top: 0;
+    }
+  }
+
+  &-footer {
+    @include flex(0 0 100%);
+  }
+
+  &--linked {
+    //display: block;
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &.cta-icon-card {}
+}

@@ -1,0 +1,170 @@
+// Custom styles for feature
+
+// The non-printing variables, functions, and mixins of 00-protons/variables
+// are provided to this file via:
+//   webpack.config.js: sass-loader.data|includePaths
+
+.feature {
+  background-color: c(gray, ultralight);
+  padding: rem-calc(40px);
+
+  header {
+    margin-bottom: rem-calc(30px);
+  }
+
+  &-heading {}
+
+  &-link {
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &:not(.feature-vertical) {
+
+    .feature-wrapper {
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: 1fr;
+
+      @include media-breakpoint-up(lg) {
+        grid-template-rows: 1fr;
+        grid-template-columns: 65% auto;
+      }
+    }
+
+    .feature-image {
+      grid-column-start: 1;
+      grid-column-end: auto;
+      grid-row-start: 1;
+      grid-row-end: 2;
+
+      @include media-breakpoint-up(lg) {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: auto;
+      }
+    }
+
+    .feature-body {
+      grid-column-start: 1;
+      grid-column-end: auto;
+      grid-row-start: 2;
+      grid-row-end: auto;
+
+      @include media-breakpoint-up(lg) {
+        grid-column-start: 2;
+        grid-column-end: auto;
+        grid-row-start: 1;
+        grid-row-end: auto;
+      }
+    }
+
+    &:not(.feature-image-right) {
+
+      .feature-body {
+
+        @include media-breakpoint-up(lg) {
+          padding-left: rem-calc(40px);
+        }
+      }
+    }
+
+    &.feature-image-right {
+
+      .feature-wrapper {
+
+        @include media-breakpoint-up(lg) {
+          grid-template-rows: 1fr;
+          grid-template-columns: auto 65%;
+        }
+      }
+
+      .feature-image {
+        //grid-column-start: 1;
+        //grid-column-end: auto;
+        //grid-row-start: 2;
+        //grid-row-end: auto;
+
+        @include media-breakpoint-up(lg) {
+          grid-column-start: 2;
+          grid-column-end: auto;
+          grid-row-start: 1;
+          grid-row-end: auto;
+        }
+      }
+
+      .feature-body {
+        //grid-column-start: 1;
+        //grid-column-end: auto;
+        //grid-row-start: 1;
+        //grid-row-end: 2;
+
+        @include media-breakpoint-up(lg) {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 1;
+          grid-row-end: auto;
+          padding-right: rem-calc(40px);
+        }
+      }
+    }
+
+  }
+
+  &-wrapper {}
+
+  &-image {}
+
+  &-body {}
+
+  &-title {}
+
+  &-subtitle {}
+
+  &-description {}
+
+  footer {
+    margin-top: rem-calc(30px);
+
+    .btn {}
+  }
+
+  &-vertical {
+
+    .feature-wrapper {
+      @include overlays($type: 'color', $color: c(black), $opacity: .5);
+      position: relative;
+
+      &:before {
+        z-index: 1;
+      }
+    }
+
+    .feature-image {}
+
+    .feature-body {
+      @include absolute-center;
+      text-align: center;
+      width: 90%;
+      z-index: 1;
+    }
+
+    .feature-title {
+      color: c(white);
+    }
+
+    .feature-description {
+      color: c(white);
+    }
+
+    footer {
+      .btn {}
+    }
+
+  }
+
+}

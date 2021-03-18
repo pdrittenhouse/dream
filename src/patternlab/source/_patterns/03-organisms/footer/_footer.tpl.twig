@@ -1,0 +1,193 @@
+{#
+/**
+ * @file
+ * footer
+ *
+ * Available variables for footer:
+ *  - footer_other_classes [array]: Additional component classes.
+ */
+#}
+
+{% set footer_classes = footer_classes|default([])|merge([
+  'site-footer',
+  footer_other_classes,
+]) | sort | join(' ') | trim %}
+
+<footer class="{{ footer_classes }}" role="contentinfo" id="{{ footer_id|default('footer') }}">
+  {% block footer %}
+    <div class="site-footer--nav">
+      <div class="container">
+        <div class="row">
+          <div class="site-footer--nav-menu">
+            {% block footer_nav %}
+              {% include '@molecules/nav/_nav.tpl.twig' with {
+                nav_element: footer_nav.nav_element,
+                navbar_breakpoint: footer_nav.navbar_breakpoint,
+                hover_dropdown: footer_nav.hover_dropdown,
+                breakpoints: footer_nav.breakpoints,
+                nav_classes: footer_nav.nav_classes,
+                nav_other_classes: footer_nav.nav_other_classes,
+                items: footer_nav.items
+              } %}
+            {% endblock footer_nav %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer--info">
+      <div class="container">
+        <div class="row">
+          {% block footer_info %}
+            <div class="site-footer--company">
+              {% block footer_brand %}
+                {% include "@atoms/branding/_branding.tpl.twig" with {
+                  url: brand.url,
+                  logo_svg_inline: brand.logo_svg_inline,
+                  colorOriginal: brand.colorOriginal,
+                  site_name: brand.site_name,
+                  site_slogan: brand.site_slogan,
+                  branding_classes: brand.branding_classes,
+                  branding_other_classes: brand.branding_other_classes
+                } %}
+              {% endblock footer_brand %}
+              <div class="row">
+                <div class="site-footer--contact">
+                  {% block contact_info %}
+                    {% include '@atoms/list/_list.tpl.twig' with {
+                      parent_element: contact_info.parent_element,
+                      parent_classes: contact_info.parent_classes,
+                      parent_other_classes: contact_info.parent_other_classes,
+                      items: contact_info.items
+                    } %}
+                  {% endblock contact_info %}
+                </div>
+                <div class="site-footer--contact-button">
+                  {% block contact_button %}
+                    {% include '@atoms/button/_button.tpl.twig' with {
+                      button_element: contact_button.button_element,
+                      button_link: contact_button.button_link,
+                      button_color: contact_button.button_color,
+                      button_text: contact_button.button_text,
+                      button_classes: contact_button.button_classes,
+                      button_other_classes: contact_button.button_other_classes
+                    } %}
+                  {% endblock contact_button %}
+                </div>
+              </div>
+              {% block footer_search %}
+                {% embed '@atoms/form/_form.tpl.twig' with {
+                  attributes: '',
+                  name: 'footer-search',
+                  id: 'footerSearch',
+                  charset: '',
+                  action: '',
+                  autocomplete: '',
+                  method: '',
+                  enctype: '',
+                  novalidate: '',
+                  target: '',
+                  heading: 'Search',
+                  form_other_classes: ''
+                  } %}
+                  {% block form_content %}
+                    <input type="text" placeholder="Search">
+                    {% embed '@atoms/button/_button.tpl.twig' with {
+                      button_other_classes: 'search-submit'
+                      } %}
+                      {% block button_content %}
+                        {% include '@atoms/svg/_svg~icon.tpl.twig' with {
+                          width: '30px',
+                          height: '30px',
+                          name: 'search',
+                          fill: 'royal-blue',
+                          svg_other_classes: 'icon',
+                        } %}
+                      {% endblock button_content %}
+                    {% endembed %}
+                  {% endblock form_content %}
+                {% endembed %}
+              {% endblock footer_search %}
+            </div>
+            <div class="site-footer--actions">
+              {% block footer_actions %}
+                {% embed '@atoms/form/_form.tpl.twig' with {
+                  attributes: '',
+                  name: 'patternlab-demo-name',
+                  id: 'patternlab-demo-id',
+                  charset: '',
+                  action: '',
+                  autocomplete: '',
+                  method: '',
+                  enctype: '',
+                  novalidate: '',
+                  target: '',
+                  heading: 'Subscribe!',
+                  intro: 'Creative thinking, market analysis, & expert opinion delivered quarterly.',
+                  form_other_classes: ''
+                  } %}
+                  {% block form_content %}
+                    <input type="text">
+                    {% include '@atoms/button/_button.tpl.twig' with {
+                      button_color: 'primary',
+                      button_text: 'Sign me up',
+                      button_other_classes: 'form-submit'
+                    } %}
+                  {% endblock form_content %}
+                {% endembed %}
+                {% include '@molecules/nav/_nav.tpl.twig' with {
+                  nav_element: utility_nav.nav_element,
+                  navbar_breakpoint: utility_nav.navbar_breakpoint,
+                  breakpoints: utility_nav.breakpoints,
+                  hover_dropdown: utility_nav.hover_dropdown,
+                  nav_other_classes: utility_nav.nav_other_classes,
+                  items: utility_nav.items
+                } %}
+              {% endblock footer_actions %}
+            </div>
+          {% endblock footer_info %}
+        </div>
+      </div>
+    </div>
+    <div class="site-footer--meta">
+      <div class="container">
+        {% block footer_meta %}
+          <div class="row">
+            <div class="site-footer--copyright">
+              {% block copyright %}
+                {{ copyright }}
+              {% endblock copyright %}
+            </div>
+            <div class="site-footer--social-nav">
+              {% block social_nav %}
+                {% include '@molecules/social-nav/_social-nav.tpl.twig' with {
+                  nav_id: social_nav.nav_id,
+                  bullet_icon_position: social_nav.bullet_icon_position,
+                  bullet_icon_size: social_nav.bullet_icon_size,
+                  hide_labels: social_nav.hide_labels,
+                  hide_icons: social_nav.hide_icons,
+                  nav_direction: social_nav.nav_direction,
+                  social_nav_items: social_nav.social_nav_items,
+                  social_nav_classes: social_nav.social_nav_classes,
+                  social_nav_other_classes: social_nav.social_nav_other_classes
+                } %}
+              {% endblock social_nav %}
+            </div>
+            <div class="site-footer--utilities">
+              {% block utilities %}
+                {% include '@molecules/nav/_nav.tpl.twig' with {
+                  nav_element: user_nav.nav_element,
+                  navbar_breakpoint:  user_nav.navbar_breakpoint,
+                  breakpoints: user_nav.breakpoints,
+                  hover_dropdown: user_nav.hover_dropdown,
+                  nav_classes: user_nav.nav_classes,
+                  nav_other_classes: user_nav.nav_other_classes,
+                  items: user_nav.items
+                } %}
+              {% endblock utilities %}
+            </div>
+          </div>
+        {% endblock footer_meta %}
+      </div>
+    </div>
+  {% endblock footer %}
+</footer>
