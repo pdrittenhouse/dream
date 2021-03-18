@@ -20,6 +20,5 @@ build/
 #**/patternlab/**
 #!**/patternlab/source
 
-# Ignore patternlab core and vendor
-**/patternlab/core/**
+# Ignore patternlab vendor directory
 **/patternlab/vendor/**
