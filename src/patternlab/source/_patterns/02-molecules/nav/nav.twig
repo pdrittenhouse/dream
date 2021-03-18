@@ -1,0 +1,127 @@
+{% include '@molecules/nav/_nav.tpl.twig' with {
+  nav_element: 'ul',
+  nav_id: 'demoNav',
+  hover_dropdown: true,
+  nav_classes: ['test-class'],
+  nav_other_classes: 'test-other-class-here',
+  navbar_breakpoint: 'xl',
+  breakpoints: scssBreakpoints,
+  items: [
+    {
+      title: 'Cras justo odio',
+      url: 'http://www.beaconfire-red.com',
+      parent_element: 'ul',
+      nav_id: 'demoSubNav',
+      nav_other_classes: 'test-sub-class',
+      items: [
+        {
+          title: 'Haero jus pala patria',
+          url: 'http://www.beaconfire-red.com',
+          parent_element: 'ul',
+          nav_id: 'demoSubNav',
+          nav_other_classes: 'test-sub-class-level-2',
+          items: [
+              {
+                title: 'Haero jus pala patria',
+                url: 'http://www.beaconfire-red.com',
+                items: [
+                {
+                  title: 'Haero jus pala patria',
+                  url: 'http://www.beaconfire-red.com'
+                },
+                {
+                  title: 'Proprius turpis valde wisi',
+                  url: 'http://www.beaconfire-red.com',
+                  item_classes: ['test-sub-item-class-level-2']
+                },
+                {
+                  title: 'Eu feugiat laoreet si usitas',
+                  url: 'http://www.beaconfire-red.com',
+                  link_other_classes: 'test-sub-link-class-level-2'
+                }
+              ]
+            },
+            {
+              title: 'Proprius turpis valde wisi',
+              url: 'http://www.beaconfire-red.com',
+              item_classes: ['test-sub-item-class-level-2']
+            },
+            {
+              title: 'Eu feugiat laoreet si usitas',
+              url: 'http://www.beaconfire-red.com',
+              link_other_classes: 'test-sub-link-class-level-2'
+            }
+          ]
+        },
+        {
+          title: 'Proprius turpis valde wisi',
+          url: 'http://www.beaconfire-red.com',
+          item_other_classes: 'test-sub-item-class'
+        },
+        {
+          title: 'Eu feugiat laoreet si usitas',
+          url: 'http://www.beaconfire-red.com',
+          link_classes:['test-sub-link-class'],
+          items: [
+            {
+              title: 'Haero jus pala patria',
+              url: 'http://www.beaconfire-red.com'
+            },
+            {
+              title: 'Proprius turpis valde wisi',
+              url: 'http://www.beaconfire-red.com',
+              item_classes: ['test-sub-item-class-level-2']
+            },
+            {
+              title: 'Eu feugiat laoreet si usitas',
+              url: 'http://www.beaconfire-red.com',
+              link_other_classes: 'test-sub-link-class-level-2'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Dapibus ac facilisis in',
+      url: 'http://www.beaconfire-red.com',
+      item_other_classes: 'test-item-class',
+      items: [
+        {
+          title: 'Haero jus pala patria',
+          url: 'http://www.beaconfire-red.com'
+        },
+        {
+          title: 'Proprius turpis valde wisi',
+          url: 'http://www.beaconfire-red.com',
+          item_classes: ['test-sub-item-class-level-2']
+        },
+        {
+          title: 'Eu feugiat laoreet si usitas',
+          url: 'http://www.beaconfire-red.com',
+          link_other_classes: 'test-sub-link-class-level-2'
+        }
+      ]
+    },
+    {
+      title: 'Morbi leo risus',
+      url: 'http://www.beaconfire-red.com',
+      link_other_classes: 'test-link-class',
+      items: [
+        {
+          title: 'Haero jus pala patria',
+          url: 'http://www.beaconfire-red.com'
+        },
+        {
+          title: 'Proprius turpis valde wisi',
+          url: 'http://www.beaconfire-red.com',
+          item_classes: ['test-sub-item-class-level-2']
+        },
+        {
+          title: 'Eu feugiat laoreet si usitas',
+          url: 'http://www.beaconfire-red.com',
+          link_other_classes: 'test-sub-link-class-level-2'
+        }
+      ]
+    }
+  ]
+} %}

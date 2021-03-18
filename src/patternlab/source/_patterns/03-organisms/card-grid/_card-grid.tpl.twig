@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * card grid
+ *
+ * Available variables for card grid:
+ *  - card_grid_title [string]: Grid title
+ *  - card_grid_classes [array]: Additional component classes.
+ *  - card_grid_other_classes [string]: Additional component classes.
+ */
+#}
+
+{% set card_grid_classes = card_grid_classes|default([])|merge([
+  'card-grid',
+  card_grid_other_classes,
+]) | sort | join(' ') | trim %}
+
+<div class="{{ card_grid_classes }}">
+  {% if card_grid_title %}
+    <h1 class="card-grid--title">{{ card_grid_title }}</h1>
+  {% endif %}
+  <div class="card-grid--grid">
+    {% block card_grid_cards %}{% endblock card_grid_cards %}
+  </div>
+</div>

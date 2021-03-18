@@ -1,0 +1,33 @@
+{% include '@atoms/video/_video.tpl.twig' with {
+  title: 'YouTube Video',
+  format: 'youtube',
+  source: 'https://www.youtube.com/embed/NpEaa2P7qZI',
+  ogg_source: '',
+  webm_source: '',
+  flv_src: '',
+  threegp_src: '',
+  autoplay: true,
+  loop: true,
+  fullscreen: true,
+  controls: false,
+  info: false,
+  aspect_ratio: 'wide',
+  width: '',
+} %}
+
+{% include '@atoms/video/_video.tpl.twig' with {
+  title: 'Vimeo Video',
+  format: 'vimeo',
+  source: 'https://player.vimeo.com/video/163721649',
+  ogg_source: '',
+  webm_source: '',
+  flv_src: '',
+  threegp_src: '',
+  autoplay: true,
+  loop: true,
+  fullscreen: true,
+  controls: false,
+  info: false,
+  aspect_ratio: 'wide',
+  width: '',
+} %}

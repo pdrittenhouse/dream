@@ -1,0 +1,108 @@
+{#
+/**
+ * @file
+ * header
+ *
+ * Available variables for header:
+ *  - header_other_classes [array]: Additional component classes.
+ *  - navbar_breakpoint [string: 'sm', 'md', 'lg', 'xl']: Breakpoint for Bootstrap navbar-toggler.
+ */
+#}
+
+{% set header_classes = header_classes|default([])|merge([
+  'site-header',
+  'navbar',
+  navbar_breakpoint ? 'navbar-expand-' ~ navbar_breakpoint,
+  header_other_classes,
+]) | sort | join(' ') | trim %}
+
+<header class="{{ header_classes }}" role="banner">
+  {% block header %}
+    <div class="site-header--wrapper">
+      <div class="site-header--container">
+        <div class="row">
+          <div class="site-header--branding">
+            {% block header_branding %}
+              {% include "@atoms/branding/_branding.tpl.twig" with {
+                url: brand.url,
+                logo_svg_inline: brand.logo_svg_inline,
+                colorOriginal: brand.colorOriginal,
+                site_name: brand.site_name,
+                site_slogan: brand.site_slogan,
+                branding_classes: brand.branding_classes,
+                branding_other_classes: brand.branding_other_classes
+              } %}
+            {% endblock header_branding %}
+          </div>
+          <div class="site-header--navigation">
+            {% block site_navigation %}
+              {% block nav_toggle %}
+                {% embed '@atoms/button/_button.tpl.twig' with {
+                  button_other_classes: 'navbar-toggler',
+                  button_toggle: 'collapse',
+                  button_attributes: [
+                  'type="button"',
+                  'data-target="#siteNav"',
+                  'aria-controls="siteNav"',
+                  'aria-expanded="false"',
+                  'aria-label="Toggle navigation"'
+                ]
+                  } %}
+                  {% block button_content %}
+                    {% include '@atoms/svg/_svg~icon.tpl.twig' with {
+                      width: '30px',
+                      height: '30px',
+                      name: 'menu',
+                      fill: 'royal-blue',
+                      svg_other_classes: 'navbar-toggler-icon',
+                    } %}
+                  {% endblock button_content %}
+                {% endembed %}
+              {% endblock nav_toggle %}
+              <div class="row">
+                <div class="collapse navbar-collapse" id="siteNav">
+                  <div class="site-header--primary-nav">
+                    {% block primary_navigation %}
+                      {% include '@molecules/nav/_nav.tpl.twig' with {
+                        nav_element: primary_nav.nav_element,
+                        nav_id: primary_nav.nav_id,
+                        nav_classes: primary_nav.nav_classes,
+                        nav_other_classes: primary_nav.nav_other_classes,
+                        navbar_breakpoint: primary_nav.navbar_breakpoint ? primary_nav.navbar_breakpoint : navbar_breakpoint,
+                        hover_dropdown: primary_nav.hover_dropdown,
+                        items: primary_nav.items,
+                        breakpoints: primary_nav.breakpoints
+                      } %}
+                      {% include '@atoms/button/_button.tpl.twig' with {
+                        button_element: primary_nav_cta.button_element,
+                        button_link: primary_nav_cta.button_link,
+                        button_color: primary_nav_cta.button_color,
+                        button_text: primary_nav_cta.button_text,
+                        button_classes: primary_nav_cta.button_classes,
+                        button_other_classes: primary_nav_cta.button_other_classes
+                      } %}
+                    {% endblock primary_navigation %}
+                  </div>
+                  <div class="site-header--secondary-nav">
+                    {% block secondary_navigation %}
+                      {% include '@molecules/nav/_nav.tpl.twig' with {
+                        nav_element: secondary_nav.nav_element,
+                        nav_id: secondary_nav.nav_id,
+                        nav_classes: secondary_nav.nav_classes,
+                        nav_other_classes: secondary_nav.nav_other_classes,
+                        navbar_breakpoint: secondary_nav.navbar_breakpoint,
+                        breakpoints: secondary_nav.breakpoints,
+                        hover_dropdown: secondary_nav.hover_dropdown,
+                        items: secondary_nav.items
+                      } %}
+                    {% endblock secondary_navigation %}
+                  </div>
+                </div>
+              </div>
+            {% endblock site_navigation %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock header %}
+</header>

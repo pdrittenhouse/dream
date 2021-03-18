@@ -1,0 +1,69 @@
+// Custom styles for button
+
+// The non-printing variables, functions, and mixins of 00-protons/variables
+// are provided to this file via:
+//   webpack.config.js: sass-loader.data|includePaths
+
+// Bootstrap button mixins are also available for styling:
+// @link https://github.com/twbs/bootstrap-sass/blob/881ce27c6b4101698ea849283933203e20861a33/assets/stylesheets/bootstrap/mixins/_buttons.scss
+// Alternative button mixin available in /non-printing/mixins/content-utilities.scss
+
+.button {
+
+  &:not(.navbar-toggler) { // Exclude nav toggle
+
+    // Bootstrap Button Overrides
+    &.btn {
+      &-primary {
+        @include button();
+      }
+
+      &-secondary {
+        @include button-variant(c(white), c(crimson), c(crimson));
+        @include button-size(rem-calc(20px), rem-calc(30px), rem-calc(18px), rem-calc(4px), rem-calc(4px));
+      }
+
+      &-success {}
+
+      &-danger {}
+
+      &-warning {}
+
+      &-info {}
+
+      &-light {}
+
+      &-dark {}
+
+      &-link {}
+    }
+
+  }
+
+}
+
+.button-group {
+  text-align: center;
+
+  &.vertical {
+
+    .button {
+      margin-bottom: 30px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &:not(.vertical) {
+
+    .button {
+      margin-right: 30px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

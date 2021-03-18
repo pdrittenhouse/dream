@@ -1,0 +1,72 @@
+{#
+Jumbotron
+
+jumbotron_fluid: Boolean: Removes rounded corners and sets full horizontal space of parent.
+jumbotron_title: String: The title of the Jumbotron
+jumbotron_subtitle: String: The Subtitle of the Jumbotron
+jumbotron_text: String: The text of the Jumbotron.
+jumbotron_link: String: the path to another URL
+jumbotron_link_text: String: the link's text
+
+button vars see @atoms/button
+button_text: String: Display text on the button
+button_color: String: primary|secondary|success|danger|warning|info|light|dark
+button_size: String: lg|sm set whether the button is large or small
+
+see https://getbootstrap.com/docs/4.0/components/jumbotron/ for more details
+#}
+
+{% set jumbotron_classes = jumbotron_classes|default([])|merge([
+  'jumbotron',
+  jumbotron_other_classes,
+]) | sort | join(' ') | trim %}
+
+<div class="{{ jumbotron_classes }}">
+  <div class="{{ jumbotron_fluid == true ? 'container-fluid' : 'container' }}">
+    <div class="row">
+      {% block jumbotron_image %}
+        <div class="jumbotron--image">
+          {% include '@atoms/image/_image.tpl.twig' with {
+            variant: jumbotron_image.variant,
+            src: jumbotron_image.src,
+            alt: jumbotron_image.alt,
+            placeholder: jumbotron_image.placeholder,
+            image_classes: jumbotron_image.image_classes,
+            image_other_classes: jumbotron_image.image_other_classes,
+            width: jumbotron_image.width,
+            height: jumbotron_image.height,
+            background_color: jumbotron_image.background_color,
+            text_color: jumbotron_image.text_color,
+            text: jumbotron_image.text,
+            format: jumbotron_image.format
+          } %}
+        </div>
+      {% endblock jumbotron_image %}
+      {% block jumbotron_content %}
+        <div class="jumbotron--content">
+          {% if jumbotron_title %}
+            <h1 class="jumbotron--title">{{ jumbotron_title }}</h1>
+          {% endif %}
+
+          {% if jumbotron_subtitle %}
+            <h2 class="jumbotron--subtitle">{{ jumbotron_subtitle }}</h2>
+          {% endif %}
+
+          {% if jumbotron_text %}
+            <p class="jumbotron--text">{{ jumbotron_text }}</p>
+          {% endif %}
+
+          {% if button_text %}
+            {% include "@atoms/button/_button.tpl.twig" with {
+              button_text: button_text,
+              button_color: button_color,
+              button_size: button_size,
+              button_link: button_link,
+            } only %}
+          {% endif %}
+        </div>
+      {% endblock jumbotron_content %}
+    </div>
+  </div>
+  <span class="bg"></span>
+</div>

@@ -17,5 +17,9 @@ dist/
 build/
 
 # Ignore everything in the "patternlab" directory, except patterns:
-**/patternlab/**
-!**/patternlab/source
+#**/patternlab/**
+#!**/patternlab/source
+
+# Ignore patternlab core and vendor
+**/patternlab/core/**
+**/patternlab/vendor/**

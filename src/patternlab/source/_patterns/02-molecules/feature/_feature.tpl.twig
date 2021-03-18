@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * feature
+ *
+ * Available variables for feature:
+ *  - id [string]: Feature ID
+ *  - vertical [bool]: Lays the feature out vertically
+ *  - image [object]: Feature image object
+ *  - image_right [bool]: Position image on right of horizontal feature
+ *  - caption [string]: Feature image caption
+ *  - caption_position [string: 'before', 'after']: Feature image caption position
+ *  - heading [string]: Feature title
+ *  - title [string]: Feature title
+ *  - link [string]: URL for a linked feature
+ *  - target [string]: Target for feature link
+ *  - linked [bool]: Links the entire feature
+ *  - description [string]: Author's organization\
+ *  - button [object]: Feature button object
+ *  - feature_classes [array]: Additional component classes.
+ *  - feature_other_classes [array]: Additional component classes.
+ */
+#}
+
+{% set feature_classes = feature_classes|default([])|merge([
+  'feature',
+  vertical == true ? 'feature-vertical' : '',
+  image_right == true ? 'feature-image-right',
+  feature_other_classes,
+]) | sort | join(' ') | trim %}
+
+<div class="{{ feature_classes }}" {% if id %}id="{{ id }}"{% endif %}>
+  {% block header %}
+    {% if heading %}
+      <header>
+        <h1 class="feature-heading">{{ heading }}</h1>
+      </header>
+    {% endif %}
+  {% endblock %}
+  {% if link and linked == true %}
+  <a href="{{ link }}" class="feature-wrapper feature-link"  target="{{ target ? target : '_self' }}">
+  {% else %}
+  <div class="feature-wrapper">
+  {% endif %}
+    {% if image %}
+      <figure class="feature-image" role="figure"  aria-labelledby="{{ id ~ 'image-caption' }}" id="{{ id ~ 'image' }}">
+        {% if caption_position == 'before' %}
+          <figcaption id="{{ id ~ 'image-caption' }}">{{ caption }}</figcaption>
+        {% endif %}
+        {% include '@atoms/image/_image.tpl.twig' with image %}
+        {% if caption_position == 'after' %}
+          <figcaption id="{{ id ~ 'image-caption' }}">{{ caption }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
+    <div class="feature-body">
+      {% if title %}
+        <h1 class="feature-title">{{ title }}</h1>
+      {% endif %}
+      {% if subtitle %}
+        <h2 class="feature-subtitle">{{ subtitle }}</h2>
+      {% endif %}
+      <div class="feature-description">
+        {{ description }}
+      </div>
+      {% block footer %}
+        {% if button %}
+          <footer>
+          {% if link and linked == false %}
+            {% include "@atoms/button/_button.tpl.twig" with {
+              button_element: 'a',
+              button_color: button.button_color,
+              button_text: button.button_text,
+              button_link: link,
+              button_outline: button.button_outline,
+              button_size: button.button_size,
+              button_block: button.button_block,
+              button_active: button.button_active,
+              button_classes: button.button_classes,
+              button_other_classes: button.button_other_classes,
+            } %}
+          {% endif %}
+          </footer>
+        {% endif %}
+      {% endblock %}
+    </div>
+  {% if link and linked == true %}
+  </a>
+  {% else %}
+  </div>
+  {% endif %}
+</div>
+

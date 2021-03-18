@@ -1,0 +1,97 @@
+// Custom styles for social nav
+
+// The non-printing variables, functions, and mixins of 00-protons/variables
+// are provided to this file via:
+//   webpack.config.js: sass-loader.data|includePaths
+
+.social-nav {
+  padding: 0;
+  margin: rem-calc(16px) 0;
+
+  &-item {
+    text-align: center;
+    margin-bottom: rem-calc(15px);
+
+    &.facebook {}
+
+    &.twitter {}
+
+    &.linked-in {}
+
+    &.youtube {}
+
+    &.instagram {}
+  }
+
+  &.bullet-icons--before,
+  &.bullet-icons--after {
+    display: block;
+    text-align: left;
+    padding: 0;
+    width: 100%;
+
+    > .social-nav-item {
+      >.icon {
+        @include absolute-center(true, false, true);
+        right: auto;
+      }
+    }
+  }
+
+  .icon {
+    pointer-events: none;
+  }
+
+  &-link {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: rem-calc(.625px);
+    font-weight: bold;
+    position: relative;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .label {}
+
+  &.hide-labels {
+
+    .social-nav-item {
+      position: relative;
+    }
+
+    .label {
+      @include remove;
+    }
+
+    .icon {
+      @include absolute-center;
+    }
+  }
+
+  &.hide-icons {
+    .icon {
+      @include remove;
+    }
+
+    .social-nav-link {
+      padding-top: 0;
+    }
+  }
+
+  &.nav-direction-horizontal {
+
+    .social-nav-item {
+      display: inline-block;
+    }
+  }
+
+  &.nav-direction-vertical {
+
+    .social-nav-item {}
+  }
+
+}
+
