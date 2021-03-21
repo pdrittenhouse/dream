@@ -12,6 +12,7 @@
     site_slogan: site.description,
     branding_other_classes: 'navbar-brand'
   },
+  navbar_breakpoint: 'lg',
   header_other_classes: ''
 } %}
   {% block primary_navigation %}
@@ -35,7 +36,7 @@
     {% include "partial/menus/menu.twig" with {
       'menu': menu.get_items,
       'nav_id': 'userNavHeader',
-      'navbar_breakpoint': 'lg',
+      'navbar_breakpoint': 'xs',
       'nav_other_classes': 'user-nav'
     } %}
   {% endblock secondary_navigation %}
