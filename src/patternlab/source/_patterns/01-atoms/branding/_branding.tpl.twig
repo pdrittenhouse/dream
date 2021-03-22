@@ -21,7 +21,7 @@
 
 {% set alt_text = site_name ~ ': ' ~ site_slogan %}
 
-<div class="branding" class="{{ branding_classes }}">
+<div class="{{ branding_classes }}">
   <div class="branding--site-logo">
     <a href="{{ url }}" title="{{ site_name }}" rel="home">
       {% if logo_svg_inline %}
