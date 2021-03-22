@@ -124,7 +124,7 @@
         {% set dropdown_id = 'id="' ~ dropdown_menu_toggle_target ~ '"' %}
       {% endif %}
 
-      <{{ nav_element }} {{ nav_id > 'id="' ~ nav_id ~ '"' }} class="{{ nav_classes }}" {{ dropdown_id }} {{ nav_attributes }}>
+      <{{ nav_element }} {{ nav_id ? 'id="' ~ nav_id ~ '"' }} class="{{ nav_classes }}" {{ dropdown_id }} {{ nav_attributes }}>
       {% for item in items %}
         {% set nav_count = nav_count + 1 %}
 
