@@ -107,7 +107,7 @@
       {% set nav_element = nav_element | default('ul') %}
 
       {% set nav_classes = nav_classes|default([])|merge([
-        navbar_breakpoint is empty or navbar_breakpoint == 'xs' ? '' : 'flex-column',
+        'flex-column',
         navbar_breakpoint ? 'flex-' ~ navbar_breakpoint ~ '-row',
         nav_pills ? 'nav-pills',
         dropdown_menu ? 'dropdown-menu' : 'nav',
