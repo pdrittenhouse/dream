@@ -101,7 +101,7 @@ module.exports = {
                 }),
                 // Enable Sass to import other components via, eg:
                 // `@import 01-atoms/thing/thing`
-                includePaths: `${paths.plsrc}/_patterns/`,
+                includePaths: [`${paths.plsrc}/_patterns/`],
               },
               // ALL Sass partials should be provided with non-printing
               // variables, mixins, and functions

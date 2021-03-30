@@ -7,13 +7,13 @@
 $fa-font-path:        "../webfonts";
 
 //Import Font Awesome Free
-//@import '~@fortawesome/fontawesome-free/scss/variables';
-//@import '~@fortawesome/fontawesome-free/scss/mixins';
+@import '~@fortawesome/fontawesome-free/scss/variables';
+@import '~@fortawesome/fontawesome-free/scss/mixins';
 //Core files included in non-printing so placeholders & mixins will be available globally
-//@import '~@fortawesome/fontawesome-free/scss/core';
+@import '~@fortawesome/fontawesome-free/scss/core';
 
 //Import Font Awesome Pro
-@import '~@fortawesome/fontawesome-pro/scss/variables';
-@import '~@fortawesome/fontawesome-pro/scss/mixins';
+//@import '~@fortawesome/fontawesome-pro/scss/variables';
+//@import '~@fortawesome/fontawesome-pro/scss/mixins';
 //Core files included in non-printing so placeholders & mixins will be available globally
-@import '~@fortawesome/fontawesome-pro/scss/core'; 
+//@import '~@fortawesome/fontawesome-pro/scss/core';
