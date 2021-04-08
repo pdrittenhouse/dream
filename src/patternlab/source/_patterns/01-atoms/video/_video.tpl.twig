@@ -13,6 +13,7 @@
  * - 3gp_src: URL for 3gp video
  * - autoplay [bool]: Autoplay video (YouTube)
  * - loop [bool]: Loop video (YouTube)
+ * - muted [bool]: mute video ('youtube' or null)
  * - fullscreen [bool]: Allow fullscreen
  * - controls [bool]: Show controls
  * - info [bool]: Show video info (YouTube)
@@ -71,13 +72,19 @@
         {% set controls = '0' %}
       {% endif %}
 
+      {% if muted == true %}
+        {% set muted = '1' %}
+      {% else %}
+        {% set muted = '0' %}
+      {% endif %}
+
       {% if info == true %}
         {% set info = '1' %}
       {% else %}
         {% set info = '0' %}
       {% endif %}
 
-      <iframe width="100%" height="100%" src="{{ source }}?rel=0?version=3&autoplay={{ autoplay }}&controls={{ controls }}&showinfo={{ info }}&loop={{ loop }}" frameborder="0" allow="accelerometer; {{ allow_autoplay }} encrypted-media; gyroscope; picture-in-picture; {{ allow_fullscreen }}" {{ fullscreen }}></iframe>
+      <iframe width="100%" height="100%" src="{{ source }}?rel=0?version=3&autoplay={{ autoplay }}&controls={{ controls }}&showinfo={{ info }}&loop={{ loop }}&mute={{ muted }}" frameborder="0" allow="accelerometer; {{ allow_autoplay }} encrypted-media; gyroscope; picture-in-picture; {{ allow_fullscreen }}" {{ fullscreen }}></iframe>
 
     {% else %}
 
@@ -85,7 +92,19 @@
         {% set controls = 'controls="controls"' %}
       {% endif %}
 
-      <video width="100%" height="100%" {{ controls }}>
+      {% if autoplay == true %}
+        {% set autoplay = 'autoplay="autoplay"' %}
+      {% endif %}
+
+      {% if loop == true %}
+        {% set loop = 'loop="loop"' %}
+      {% endif %}
+
+      {% if muted == true %}
+        {% set muted = 'muted="muted"' %}
+      {% endif %}
+
+      <video width="100%" height="100%" {{ controls }} {{ autoplay }} {{ loop }} {{ muted }}>
         <source src="{{ source }}" type="video/mp4" />
         {% if ogg_source is not empty%}
           <source src="{{ ogg_source }}" type="video/ogg" />
